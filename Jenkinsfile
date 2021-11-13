@@ -1,21 +1,13 @@
 pipeline {
-    agent any 
+    agent any
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }
     stages {
-        stage('build') { 
+        stage('Example') {
             steps {
-                echo 'building the application'
+                echo "${params.Greeting} World!"
             }
         }
-        stage('Test') { 
-            steps {
-               echo 'testing the application'
-            }
-        }
-
-        stage('deploy') { 
-            steps {
-                echo 'deploying the application'
-            }
-        }
-}
+    }
 }
